@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+    <head>
+
+        <meta charset="utf-8" />
+
+
+
+        <!-- Set the viewport width to device width for mobile -->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+        <title>Coliseum</title>
+
+
+
+        <!-- Included CSS Files (Uncompressed) -->
+
+        <!--
+      
+        <link rel="stylesheet" href="stylesheets/foundation.css">
+      
+        -->
+
+
+
+        <!-- Included CSS Files (Compressed) -->
+
+
+
+        <link rel="stylesheet" href="stylesheets/app.css">
+
+        <link rel="stylesheet" href="stylesheets/foundation.css">
+
+
+
+
+
+
+
+
+
+
+
+        <script src="javascripts/modernizr.foundation.js"></script>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+        <script>
+
+            $(function() {
+
+                var pull 		= $('#pull');
+
+                menu 		= $('nav ul');
+
+                menuHeight	= menu.height();
+
+
+
+                $(pull).on('click', function(e) {
+
+                    e.preventDefault();
+
+                    menu.slideToggle();
+
+                });
+
+
+
+                $(window).resize(function(){
+
+                    var w = $(window).width();
+
+                    if(w > 320 && menu.is(':hidden')) {
+
+                        menu.removeAttr('style');
+
+                    }
+
+                });
+
+            });
+
+        </script>
+
+
+
+
+
+
+
+        <!-- IE Fix for HTML5 Tags -->
+
+        <!--[if lt IE 9]>
+      
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      
+        <![endif]-->
+
+
+
+
+
+        <link rel="stylesheet" type="text/css" href="inc/shadowbox.css" />
+
+        <script type="text/javascript" src="inc/shadowbox.js"></script>
+
+        <script type="text/javascript">
+
+            Shadowbox.init({
+
+                handleOversize: "drag",
+
+                modal: true
+
+            });
+
+        </script>
+
+
+
+
+
+        <script type="text/javascript">
+
+            // Início do código de Aumentar/ Diminuir a letra
+
+ 
+
+            // Para usar coloque o comando:
+
+            // "javascript:mudaTamanho('tag_ou_id_alvo', -1);" para diminuir
+
+            // e o comando "javascript:mudaTamanho('tag_ou_id_alvo', +1);" para aumentar
+
+ 
+
+            var tagAlvo = new Array('p'); //pega todas as tags p//
+
+ 
+
+            // Especificando os possíveis tamanhos de fontes, poderia ser: x-small, small...
+
+            var tamanhos = new Array( '9px','10px','11px','12px','13px','14px','15px','16px','17px','18px');
+
+            var tamanhoInicial = 2;
+
+ 
+
+            function mudaTamanho( idAlvo,acao ){
+
+                if (!document.getElementById) return
+
+                var selecionados = null,tamanho = tamanhoInicial,i,j,tagsAlvo;
+
+                tamanho += acao;
+
+                if ( tamanho < 0 ) tamanho = 0;
+
+                if ( tamanho > 9 ) tamanho = 9;
+
+                tamanhoInicial = tamanho;
+
+                if ( !( selecionados = document.getElementById( idAlvo ) ) ) selecionados = document.getElementsByTagName( idAlvo )[ 0 ];
+
+ 
+
+                selecionados.style.fontSize = tamanhos[ tamanho ];
+
+ 
+
+                for ( i = 0; i < tagAlvo.length; i++ ){
+
+                    tagsAlvo = selecionados.getElementsByTagName( tagAlvo[ i ] );
+
+                    for ( j = 0; j < tagsAlvo.length; j++ ) tagsAlvo[ j ].style.fontSize = tamanhos[ tamanho ];
+
+                }
+
+            }
+
+            // Fim do código de Aumentar/ Diminuir a letra
+
+ 
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    <body onLoad="stretch()">
+
+
+
+        <div class="row">
+
+            <div class="twelve columns">
+
+
+
+                <div id="logo">
+
+                    <img src="images/logo.jpg" alt="Materiais para Construção"/>
+
+                </div>
+
+
+
+                <div id="space"> </div>
+
+
+
+
+
+                <div id="nav-meu">
+
+
+
+
+
+                    <ul>
+
+                        <li><a href="/exp" id="ativo" >Home</a></li>
+
+                        <li><a href="/exp/clientes" >Clientes</a></li>
+
+                        <li><a href="/exp/servicos" >Serviços</a></li>
+
+                        <li><a href="/exp" >Contato</a></li>
+
+
+
+
+
+
+
+
+
+                    </ul>
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <nav class="clearfix">
+
+                    <ul class="clearfix">
+
+                        <li><a href="#">Home</a></li>
+
+                        <li><a href="servicos.html">Serviços</a></li>
+
+                        <li><a href="#">Clientes</a></li>
+
+                        <li><a href="contato.html">Contato</a></li>
+
+
+
+                    </ul>
+
+                    <a href="#" id="pull">Menu</a>
+
+                </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="row">
+
+
+
+
+
+            <div class="twelve columns">
+
+
+
+                <div id="featured">
+
+                    <img src="banner.jpg" alt="slide image">
+
+                    <img src="banner.jpg" alt="slide image">
+
+                    <img src="banner.jpg" alt="slide image">
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="eight columns">
+
+
+
+
+
+                <!-- Grid Example -->
+
+                <div class="row">
+
+                    <div class="twelve columns">
+
+
+
+                        <div class="zoom">
+
+                            Texto
+
+                            <a href="javascript:mudaTamanho('texto', -1);"><img src="images/icon/zoom-.png" alt="Diminuir fonte" title="Diminuir fonte"/></a>
+
+                            <a href="javascript:mudaTamanho('texto', 1);"><img src="images/icon/zoom+.png" alt="Aumentar fonte" title="Aumentar fonte"/></a>
+
+
+
+                        </div>
+
+                        <div class="panel">
+                            <?php echo $this->layout()->content; ?>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+            <div class="four columns">
+
+
+
+                <div class="ft"><a rel="shadowbox[Mixed];" href="images/1.jpg"><img src="images/1.jpg" alt=""/></a></div>
+
+                <div class="ft"><a rel="shadowbox[Mixed];" href="images/1.jpg"><img src="images/1.jpg" alt=""/></a></div>
+
+                <div class="ft"><a rel="shadowbox[Mixed];" href="images/1.jpg"><img src="images/1.jpg" alt=""/></a></div>
+
+                <div class="ft"><a rel="shadowbox[Mixed];" href="images/1.jpg"><img src="images/1.jpg" alt=""/></a></div>
+
+
+
+                <div class="normal"><img src="images/1.jpg" alt=""/></div>
+
+                <div class="normal"><img src="images/1.jpg" alt=""/></div>
+
+                <div class="normal"><img src="images/1.jpg" alt=""/></div>
+
+                <div class="normal"><img src="images/1.jpg" alt=""/></div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div id="rodape">
+
+            <div class="row">
+
+
+
+                <div class="endereco">
+
+
+
+
+
+
+
+
+
+                    <p class="localize"><strong>Localização</strong></p>
+
+                    <p class="rua">Avenida Principal, 325 - Centro</p>
+
+
+
+
+
+                    <p>São Paulo/SP</p>
+
+
+
+                    <p>0XX21 (3225-6542)</p>
+
+                    <p>contato@empresa.com.br</p>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="endereco">
+
+
+
+
+
+
+
+
+
+                    <p><strong>Parceiros</strong></p>
+
+                    <img src="images/oas.jpg" alt="Engenharia"/>
+
+                    <img src="images/oas.jpg" alt="Engenharia"/>
+
+                    <img src="images/oas.jpg" alt="Engenharia"/>
+
+                    <img src="images/oas.jpg" alt="Engenharia"/>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="endereco">
+
+
+
+
+
+
+
+
+
+                    <p><strong>Mapa do Site</strong></p>
+
+
+
+                    <ul>
+
+                        <li><a href="#">Construção</a></li>
+
+                        <li><a href="#">Materiais Elétricos</a></li>
+
+                        <li><a href="#">Parcerias</a></li>
+
+                        <li><a href="#">Financiamento</a></li>
+
+                    </ul>
+
+
+
+                    <div class="img-icon"><img src="images/icon/facebook.png" alt=""></div>
+
+                    <div class="img-icon"> <img src="images/icon/youtube.png" alt=""></div>
+
+                    <div class="img-icon">  <img src="images/icon/twitter.png" alt=""></div>
+
+                    <div class="img-icon"> <img src="images/icon/rss.png" alt=""></div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="assinatura">
+
+
+
+            <div class="row">
+
+
+
+
+
+                <img src="images/logo-assinatura.jpg" alt=""/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>  
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Included JS Files (Uncompressed) -->
+
+        <!--
+      
+        
+      
+        <script src="javascripts/jquery.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.forms.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.reveal.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.orbit.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.navigation.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.buttons.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.tabs.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.tooltips.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.accordion.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.placeholder.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.alerts.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.topbar.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.joyride.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.clearing.js"></script>
+      
+        
+      
+        <script src="javascripts/jquery.foundation.magellan.js"></script>
+      
+        
+      
+        -->
+
+
+
+        <!-- Included JS Files (Compressed) -->
+
+        <script src="javascripts/jquery.js"></script>
+
+        <script src="javascripts/foundation.min.js"></script>
+
+
+
+        <!-- Initialize JS Plugins -->
+
+        <script src="javascripts/app.js"></script>
+
+    </body>
+
+</html>
+
+

@@ -1,0 +1,289 @@
+/*
+	Responsive Aeon Grid v2.0
+	Designed & Built by Fernando Monteiro, http://www.newaeonweb.com.br	
+	Licensed under GPL license, http://www.gnu.org/licenses/gpl-3.0-standalone.html
+	
+	Base stylesheet for forms and buttons
+*/
+//Generic style for all buttons
+.btn{
+	//Default config set here
+	@box_shadow:inset 0px 1px 0px 0px #ffffff;
+	@bg:#ededed;
+	@radius:6px;
+	@font:bold 1em e('/') 1.5em "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	@border:1px solid #dcdcdc;
+	@text_color:#777777;
+	@padding:6px 24px;
+	@decoration:none;
+	@text_shadow:1px 1px 0px #ffffff;
+    @hover_bg:#dfdfdf;
+
+	-moz-box-shadow:@box_shadow;
+	-webkit-box-shadow:@box_shadow;
+	box-shadow:@box_shadow;
+	background-color:@bg;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+	border:@border;
+	display:inline-block;
+	color:@text_color;
+	font:@font;
+	padding:@padding;
+	text-decoration:@decoration;
+	text-shadow:@text_shadow;
+	behavior:url(js/pie.htc);
+&:hover {
+	background-color:@hover_bg;
+}
+&:active {
+	position:relative;
+	top:1px;
+}
+}
+// Apply individual classes for actions : Confirm, Error, Send;
+.confirm {
+	//Default config set here
+	@bg:#9dce2c;
+	@box_shadow:inset 0px 1px 0px 0px #c1ed9c;
+	@border:1px solid #83c41a;
+	@radius:6px;
+	@font:bold 1em e('/') 1.5em "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	@text_color:#ffffff;
+	@text_shadow:1px 1px 0px #689324;
+    @hover_bg:#8cb82b;
+
+
+	-moz-box-shadow:@box_shadow;
+	-webkit-box-shadow:@box_shadow;
+	box-shadow:@box_shadow;
+	background-color:@bg;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+	border:@border;
+	color:@text_color;
+	font:@font;
+	text-shadow:@text_shadow;
+&:hover {
+	background-color:@hover_bg;
+}
+&:active {
+	position:relative;
+	top:1px;
+}
+}
+
+.error {
+	//Default config set here
+	@bg:#f24537;
+	@box_shadow:inset 0px 1px 0px 0px #f5978e;
+	@border:1px solid #d02718;
+	@radius:6px;
+	@font:bold 1em e('/') 1.5em "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	@text_color:#ffffff;
+	@text_shadow:1px 1px 0px #810e05;
+    @hover_bg:#c62d1f;
+
+
+	-moz-box-shadow:@box_shadow;
+	-webkit-box-shadow:@box_shadow;
+	box-shadow:@box_shadow;
+	background-color:@bg;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+	border:@border;
+	color:@text_color;
+	font:@font;
+	text-shadow:@text_shadow;
+&:hover {
+	background-color:@hover_bg;
+}
+&:active {
+	position:relative;
+	top:1px;
+}
+}
+
+
+.send {
+	//Default config set here
+	@bg:#3d94f6;
+	@box_shadow:inset 0px 1px 0px 0px #97c4fe;
+	@border:1px solid #337fed;
+	@radius:6px;
+	@font:bold 1em e('/') 1.5em "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	@text_color:#ffffff;
+	@text_shadow:1px 1px 0px #1570cd;
+    @hover_bg:#1e62d0;
+
+
+	-moz-box-shadow:@box_shadow;
+	-webkit-box-shadow:@box_shadow;
+	box-shadow:@box_shadow;
+	background-color:@bg;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+	border:@border;
+	color:@text_color;
+	font:@font;
+	text-shadow:@text_shadow;
+&:hover {
+	background-color:@hover_bg;
+}
+&:active {
+	position:relative;
+	top:1px;
+}
+}
+
+/*Size of all buttons*/
+.btn.small {
+	@small:0.835em;
+	@padding: 3px 12px;
+	@radius: 3px;
+
+	font-size:@small;
+	padding: @padding;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+}
+
+.btn.big {
+	@big:1.5em;
+	@padding:10px 20px;
+
+	font-size:@big; 
+	padding: @padding;
+}
+
+
+/*Forms*/
+.forms {
+	@width:98%;
+	width:@width;
+	} /*use width to limit the form width, coz the percentage controls*/
+
+/** You can use this style for your INPUT, TEXTAREA, SELECT elements **/
+.forms input[type="text"], input[type="url"], 
+input[type="email"], input[type="tel"], input[type="password"], textarea, select  {
+	@border: 1px solid #ccc;
+	@radius:4px;
+	@bg_input: rgb(255,255,255);//fallback old Browsers
+	//Firefox + Opera + IE10 + Chrome 10 + Safari 5.1
+	@first_color:rgba(255,255,255,1) 0%;
+	@last_color:rgba(229,229,229,1) 100%;
+	//Safari 4 + Google Chrome <1
+	@color-stop-f:color-stop(0%,rgba(255,255,255,1));
+	@color-stop-l:color-stop(100%,rgba(229,229,229,1));
+
+	@ms-color-start:'#ffffff';
+	@ms-color-end:'#e5e5e5';
+	@ms-gradient-type:0;
+
+	@font: normal 0.835em e('/') 1.5em Arial, Helvetica, sans-serif;
+	@padding:5px 4px;
+
+
+	border: @border;
+	background: @bg_input; //fallback old browsers
+
+	font:@font;
+	padding: @padding;
+
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+
+	width:98%;
+	display: block;
+	margin-bottom: 10px;
+	behavior:url(js/pie.htc);
+}
+
+.forms select {width:100%;}//align with input fields
+
+//Style for mouse focus on inputs
+.forms input:focus, textarea:focus, select:focus {
+	@color:#454743;
+	@box_shadow:0 0 5px 1px #ccc;
+
+	color: @color;
+	-moz-box-shadow: @box_shadow;
+    -webkit-box-shadow: @box_shadow;
+    box-shadow: @box_shadow;
+}
+
+//Global style for submit type and button
+.forms input[type="submit"], button {
+	//Default config set here
+	@bg:rgb(236,115,29);//#ec731d
+	@box_shadow:inset 0px 1px 2px 0px #ffffff;
+	@border:1px solid #ec7e32;
+	@radius:4px;
+	@font:normal 100% e('/') 1.5em "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	@text_color:#ffffff;
+    @hover_bg:rgba(236,115,29, 0.9);
+    @padding:1.5% 2.5%;
+	@decoration:none;
+
+
+	-moz-box-shadow:@box_shadow;
+	-webkit-box-shadow:@box_shadow;
+	box-shadow:@box_shadow;
+	background-color:@bg;
+	-moz-border-radius:@radius;
+	-webkit-border-radius:@radius;
+	border-radius:@radius;
+	border:@border;
+	display:inline-block;
+	color:@text_color;
+	font:@font;
+	padding:@padding;
+	text-decoration:@decoration;
+	cursor: pointer;
+	behavior:url(js/pie.htc);
+&:hover {
+	background-color:@hover_bg;
+}
+&:active {
+	position:relative;
+	top:1px;
+}
+}
+
+//Add cursor for submit buttons outside form
+.btn, input[type="submit"], button {
+	cursor: pointer;
+}
+
+input::-webkit-input-placeholder {
+    color:    #999;
+}
+input:-moz-placeholder {
+    color:    #999;
+}
+
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+
+.forms placeholder {font-size:0.835em;}
+
+.forms label {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 0.835em;
+	color: #797272;
+}
+
+.forms fieldset { padding: 9px 9px 2px 9px; border: solid 1px #ddd; margin: 18px 0; }
+.forms legend {font-size:0.835em;color:#797272;font-family:inherit;}
+.forms input[type=radio], input[type=checkbox] { display: inline; width:auto; margin-bottom:0; }
