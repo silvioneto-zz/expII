@@ -1,0 +1,27 @@
+<form class="form-horizontal" name="login" method="post">
+  <div class="control-group">
+    <label class="control-label" for="inputUser">Usuário</label>
+    <div class="controls">
+        <input id="inputUser" name="user" type="text" placeholder="Digite o seu nome de usuário..." />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Senha</label>
+    <div class="controls">
+      <input id="inputPassword" name="pass" type="password" placeholder="Digite a sua senha..." />
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Acessar</button>
+    </div>
+  </div>
+</form>
+
+<p>
+    <?php 
+        if($this->erro == 1){ 
+            echo $this->msg;
+        }
+    ?>
+</p>

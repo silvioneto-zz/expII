@@ -16,5 +16,23 @@ class DbTable_Cliente extends Zend_Db_Table_Abstract
         }
     }
     
+    public function listaClientes(){
+        try{
+                        $this->select()->order('nome');
+            return $this->fetchAll();
+        }  catch (Exception $exc){
+            throw new Exception('Clientes não encontrados.');
+        }
+    }
+    
+    public function getCliente($nomecliente){
+        try{
+            $sql = $this->select()->where('nome like ?',  "%{$nomecliente}%")->order('nome');
+            return $this->fetchAll($sql);
+        }  catch (Exception $exc){
+            throw new Exception('Cliente não encontrado.');
+        }
+    }
+    
 }
 ?>

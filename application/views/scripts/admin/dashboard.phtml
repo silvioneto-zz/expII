@@ -1,0 +1,30 @@
+<h2>
+    Clientes
+</h2>
+<form class="form-horizontal" name="clientes" action="dashboard" method="post">
+  <div class="control-group">
+    <div class="controls">
+        <input id="inputUser" name="cliente" type="text" placeholder="Digite um nome de cliente..." />
+    </div>
+  </div>
+    <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Buscar</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="control-group">
+<h4>Lista de nossos clientes:</h4>
+    <ul>
+        <?php foreach ($this->dados as $cliente) :  ?>
+            <li><?php echo $cliente->nome . ' ' .
+                                        $cliente->telefone . ' ' .
+                                        $cliente->email . ' ' ;
+                    ?>
+           </li>
+        <?php endforeach; ?>
+    </ul>
+    <p><?php echo $this->msg; ?></p>
+  </div>
