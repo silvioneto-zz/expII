@@ -1,0 +1,36 @@
+<h2>
+    Pedidos
+</h2>
+<form class="form-horizontal" name="pedidos" action="pedidos" method="post">
+  <div class="control-group">
+    <div class="controls">
+        <input id="inputUser" name="pedido" type="text" placeholder="Digite um número de pedido..." />
+    </div>
+  </div>
+    <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Buscar</button>
+    </div>
+  </div>
+</form>
+<h4><a href="/exp/admin/inserir-pedido">Inserir Pedido</a></h4>
+
+
+<div class="control-group">
+<h4>Lista de nossos pedidos:</h4>
+    <table border="1">
+        <tr><td>Nrº Pedido</td><td>Cliente</td><td>Total</td><td>Data Pedido</td></tr>
+        <?php foreach ($this->dados as $pedido) :  ?>
+            <tr><?php echo '<td>'.$pedido->idPedido. '</td>' .
+                                         '<td>'.$pedido->nome. '</td>' .
+                                         '<td>'.$pedido->totalPedido . '</td>' .
+                                         '<td>'.$pedido->dataPedido . '</td>' ;
+                    ?>
+           </tr>
+        <?php endforeach; ?>
+    </table>
+    <p><?php echo $this->msg; ?></p>
+  </div>
+
+
+<h4><a href="/exp/admin/dashboard">Voltar</a></h4>
