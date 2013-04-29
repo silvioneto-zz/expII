@@ -33,5 +33,13 @@ class DbTable_PedidoTotal extends Zend_Db_Table_Abstract
         }
     }
     
+      public function apagarPedido($codpedido){
+        try{
+            $this->delete('idPedido = '.$codpedido);
+        }  catch (Exception $exc){
+            throw new Exception('Pedido não encontrado.');
+        }
+    }
+    
 }
 ?>

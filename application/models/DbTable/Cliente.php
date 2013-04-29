@@ -30,19 +30,25 @@ class DbTable_Cliente extends Zend_Db_Table_Abstract
             $sql = $this->select()->where('nome like ?',  "%{$nomecliente}%")->order('nome');
             return $this->fetchAll($sql);
         }  catch (Exception $exc){
-            die($exc->getMessage());
             throw new Exception('Cliente não encontrado.');
         }
     }
     
     public function apagarCliente($codcliente){
         try{
-            return $this->delete($this->_name, array('idCliente =  ?', $codcliente));
-            
+            $pedido = new DbTable_Pedido();
+            $pedidos = $pedido->getPedidosByCliente($codcliente);
+            $this->delete('idCliente = '.$codcliente);
+            if(count($pedidos)>0){
+                $pedidoTotal = new DbTable_PedidoTotal();
+                foreach ($pedidos as $p){
+                    $pedidoTotal->apagarPedido($p->idPedido);
+                }
+                $pedido->apagarPedidoCliente($codcliente);
+            }
             
         }  catch (Exception $exc){
-            die($exc->getMessage());
-            throw new Exception('Cliente não encontrado.');
+            throw new Exception('Cliente não encontrado.'.$exc->getMessage());
         }
     }
     
