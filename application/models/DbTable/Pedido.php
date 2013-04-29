@@ -59,10 +59,45 @@ class DbTable_Pedido extends Zend_Db_Table_Abstract
     
     public function getPedido($codpedido){
         try{
-            $sql = $this->select()->where('idPedido = ?',  $codpedido)->order('idPedido desc');
-            return $this->fetchRow($sql);
+             $sql = $this->select()
+                                ->from(array('p' => $this->_name), 
+                                                        array('idPedido'))
+                                ->setIntegrityCheck(false)
+                                ->join(array('c' => 'clientes'),
+                                                    'p.idCliente = c.idCliente',
+                                                     array('nome'))
+                                ->join(array('t' => 'pedidoTotal'),
+                                                    'p.idPedido = t.idPedido',
+                                                    array('totalPedido', 'dataPedido'))
+                                 ->where('p.idPedido = ?',  $codpedido)
+                                ->group('p.idPedido')
+                                ->order('p.idPedido desc');
+            return $this->fetchAll($sql);
         }  catch (Exception $exc){
             throw new Exception('Pedido não encontrado.');
+        }
+    }
+    
+        public function getPedidoDetalhe($codpedido){
+        try{
+            $sql = $this->select()
+                                ->from(array('p' => $this->_name), 
+                                                        array('idPedido'))
+                                ->setIntegrityCheck(false)
+                                ->join(array('c' => 'clientes'),
+                                                    'p.idCliente = c.idCliente',
+                                                     array('nome'))
+                                ->join(array('s' => 'servicos'),
+                                                    'p.idServico = s.idServico',
+                                                     array('servico','preco','duracao'))
+                                ->join(array('t' => 'pedidoTotal'),
+                                                    'p.idPedido = t.idPedido',
+                                                    array('totalPedido', 'dataPedido'))
+                                 ->where('p.idPedido = ?',  $codpedido)
+                                ->order('p.idPedido desc');
+            return $this->fetchAll($sql);
+        }  catch (Exception $exc){
+            throw new Exception('Detalhe do pedido não encontrado.');
         }
     }
     

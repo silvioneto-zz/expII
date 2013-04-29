@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Admin</title>
 <!-- Incluindo o CSS do Bootstrap -->
-<link href="../stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/exp/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
     <div style="padding: 50px;">
@@ -12,7 +12,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <!-- Incluindo o JavaScript do Bootstrap -->
-<script src="../javascripts/bootstrap.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/exp/javascripts/bootstrap.min.js"></script>
 
 <?php echo $this->layout()->content; ?>
 

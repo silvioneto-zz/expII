@@ -21,16 +21,40 @@
     <table border="1">
         <tr><td>Nrº Pedido</td><td>Cliente</td><td>Total</td><td>Data Pedido</td></tr>
         <?php foreach ($this->dados as $pedido) :  ?>
-            <tr><?php echo '<td>'.$pedido->idPedido. '</td>' .
-                                         '<td>'.$pedido->nome. '</td>' .
-                                         '<td>'.$pedido->totalPedido . '</td>' .
-                                         '<td>'.$pedido->dataPedido . '</td>' ;
-                    ?>
-           </tr>
+            <tr>
+                <td><b><a href="/exp/admin/pedidos/id/<?php echo $pedido->idPedido; ?>">#<?php echo $pedido->idPedido; ?></a></b></td>
+                <td><?php echo $pedido->nome; ?></td>
+                <td><?php echo $pedido->totalPedido; ?></td>
+                <td><?php echo $pedido->dataPedido; ?></td>
+            </tr>
         <?php endforeach; ?>
     </table>
     <p><?php echo $this->msg; ?></p>
   </div>
+
+<?php if($this->detalhePedido): ?>
+
+    <div class="control-group">
+    <h4>Detalhe pedido: </h4>
+    <h6>Pedido: #<?php echo $this->detalhePedido[0]->idPedido; ?></h6>  
+    <ul>
+            <li>Cliente: <?php echo $this->detalhePedido[0]->nome; ?></li>
+            <li>Total: R$ <?php echo $this->detalhePedido[0]->totalPedido; ?></li>
+            <li>Data: <?php echo $this->detalhePedido[0]->dataPedido; ?></li>
+    </ul>
+      <table border="1">
+            <tr><td>Serviço</td><td>Preço</td><td>Duração</td></tr>
+            <?php foreach ($this->detalhePedido as $pedidoDetalhe) :  ?>
+                <tr>
+                    <td><?php echo $pedidoDetalhe->servico; ?></td>
+                    <td>R$ <?php echo $pedidoDetalhe->preco; ?></td>
+                    <td><?php echo $pedidoDetalhe->duracao; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+      </div>
+
+<?php endif; ?>
 
 
 <h4><a href="/exp/admin/dashboard">Voltar</a></h4>

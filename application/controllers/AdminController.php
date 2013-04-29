@@ -35,11 +35,7 @@ class AdminController extends Zend_Controller_Action
          }
     }
     
-    public function dashboardAction()
-    { 
-        
-             
-    }
+    public function dashboardAction(){}
     
     public function clientesAction(){
         if($this->getRequest()->isPost()){
@@ -52,14 +48,29 @@ class AdminController extends Zend_Controller_Action
                      $this->view->msg = $exc->getMessage();
                  }
          }else{
+             
+             if($this->_hasParam('editar')){
+             
+            }elseif($this->_hasParam('apagar')){
                 try {
                      $obj = new DbTable_Cliente();
-                     $this->view->dados = $obj->listaClientes();
+                     $obj->apagarCliente($this->getParam('apagar'));
                      $this->view->erro = 0;
+                     $this->view->msg = "Cliente apagado com sucesso!";
                  } catch (Exception $exc) {
                      $this->view->erro = 1;
                      $this->view->msg = $exc->getMessage();
                  }
+            }
+               
+            try {
+                 $obj = new DbTable_Cliente();
+                 $this->view->dados = $obj->listaClientes();
+                 $this->view->erro = 0;
+             } catch (Exception $exc) {
+                 $this->view->erro = 1;
+                 $this->view->msg = $exc->getMessage();
+             }
          }
     }
     
@@ -87,7 +98,8 @@ class AdminController extends Zend_Controller_Action
     }
     
      public function pedidosAction(){
-        if($this->getRequest()->isPost()){
+        
+         if($this->getRequest()->isPost()){
                 try {
                      $obj = new DbTable_Pedido();
                      $this->view->dados = $obj->getPedido($this->getParam('pedido'));
@@ -97,14 +109,25 @@ class AdminController extends Zend_Controller_Action
                      $this->view->msg = $exc->getMessage();
                  }
          }else{
-                try {
-                     $obj = new DbTable_Pedido();
-                     $this->view->dados = $obj->listaPedidos();
-                     $this->view->erro = 0;
-                 } catch (Exception $exc) {
-                     $this->view->erro = 1;
-                     $this->view->msg = $exc->getMessage();
-                 }
+             
+             if($this->_hasParam('id')){
+                try{    
+                       $obj = new DbTable_Pedido();
+                        $this->view->detalhePedido = $obj->getPedidoDetalhe($this->getParam('id'));
+                        $this->view->erro = 0;
+                    } catch (Exception $exc) {
+                        $this->view->erro = 1;
+                        $this->view->msg = $exc->getMessage();
+                    }
+            }
+            try {
+                 $obj = new DbTable_Pedido();
+                 $this->view->dados = $obj->listaPedidos();
+                 $this->view->erro = 0;
+             } catch (Exception $exc) {
+                 $this->view->erro = 1;
+                 $this->view->msg = $exc->getMessage();
+             }
          }
     }
     

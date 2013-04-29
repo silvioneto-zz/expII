@@ -27,25 +27,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                                     'path' => 'models/DbTable/',
                                     'namespace' => 'DbTable')),)
         );
-    }
-    
-     protected function initLoadAclIni() 
-     {
-        $config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/acl.ini');
-        Zend_Registry::set('acl', $config);
-    }
-
-    protected function initAclControllerPlugin() 
-    {
-        $this->bootstrap('frontcontroller');
-        $this->bootstrap('loadAclIni');
-
-        $front = Zend_Controller_Front::getInstance();
-
-        $aclPlugin = new Expii_Plugin_Acl(new Model_Acl());
-
-        $front->registerPlugin($aclPlugin);
-    }
-    
+    } 
 }
 

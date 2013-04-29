@@ -28,7 +28,7 @@ class DbTable_Servico extends Zend_Db_Table_Abstract
     public function getServico($nomeservico){
         try{
             $sql = $this->select()->where('servico like ?',  "%{$nomeservico}%")->order('servico');
-            return $this->fetchRow($sql);
+            return $this->fetchAll($sql);
         }  catch (Exception $exc){
             throw new Exception('Serviço não encontrado.');
         }
