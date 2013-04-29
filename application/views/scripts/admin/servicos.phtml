@@ -1,0 +1,33 @@
+<h2>
+    Serviços
+</h2>
+<form class="form-horizontal" name="servicos" action="servicos" method="post">
+  <div class="control-group">
+    <div class="controls">
+        <input id="inputUser" name="servico" type="text" placeholder="Digite um nome de serviço..." />
+    </div>
+  </div>
+    <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Buscar</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="control-group">
+<h4>Lista de nossos serviços:</h4>
+    <table border="1">
+        <tr><td>Serviço</td><td>Preço</td><td>Duração</td></tr>
+        <?php foreach ($this->dados as $servico) :  ?>
+            <tr><?php echo '<td>'.$servico->servico. '</td>'.
+                                         '<td>R$ '.$servico->preco . '</td>' .
+                                         '<td>'.$servico->duracao. '</td>' ;
+                    ?>
+           </tr>
+        <?php endforeach; ?>
+    </table>
+    <p><?php echo $this->msg; ?></p>
+  </div>
+
+<h4><a href="/exp/admin/dashboard">Voltar</a></h4>

@@ -1,0 +1,44 @@
+<h2>Inserir Pedido</h2>
+<form class="form-horizontal" name="inserirPedido" action="inserir-pedido" method="post">
+  <div class="control-group">
+    <div class="controls">
+        <label>Escolha um cliente:</label>
+        <select name="cliente">
+            <option value="">Escolha um cliente...</option>
+            <?php foreach ($this->clientes as $cliente) :  ?>
+                <option value="<?=$cliente->idCliente;?>"><?=$cliente->nome;?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="controls">
+        <label>Escolho os serviços:</label>
+        <select name="servico1">
+            <option value="">Escolha um serviço...</option>
+            <?php foreach ($this->servicos as $servico) :  ?>
+                <option value="<?=$servico->idServico;?>"><?=$servico->servico;?></option>
+            <?php endforeach; ?>
+        </select>
+        <select name="servico2">
+            <option value="">Escolha um serviço...</option>
+            <?php foreach ($this->servicos as $servico) :  ?>
+                <option value="<?=$servico->idServico;?>"><?=$servico->servico;?></option>
+            <?php endforeach; ?>
+        </select>
+        <select name="servico3">
+            <option value="">Escolha um serviço...</option>
+            <?php foreach ($this->servicos as $servico) :  ?>
+                <option value="<?=$servico->idServico;?>"><?=$servico->servico;?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+  </div>
+    <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Fechar Pedido</button>
+    </div>
+  </div>
+</form>
+
+ <p><?php echo $this->msg; ?></p>
+
+<h4><a href="/exp/admin/pedidos">Voltar</a></h4>
