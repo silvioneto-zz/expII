@@ -5,7 +5,7 @@ class DbTable_Cliente extends Zend_Db_Table_Abstract
     protected $_name = 'clientes';
     protected $_primary = 'idCliente';
     
-    public function insertCliente(array $data)
+    public function inserirCliente(array $data)
     {
         try {
             $output = array_map(array(new Zend_Filter_StripTags(), 'filter'), $data);
@@ -18,8 +18,8 @@ class DbTable_Cliente extends Zend_Db_Table_Abstract
     
     public function listaClientes(){
         try{
-                        $this->select()->order('nome');
-            return $this->fetchAll();
+            $sql =  $this->select()->order('nome');
+            return $this->fetchAll($sql);
         }  catch (Exception $exc){
             throw new Exception('Clientes não encontrados.');
         }
@@ -28,7 +28,7 @@ class DbTable_Cliente extends Zend_Db_Table_Abstract
     public function getCliente($nomecliente){
         try{
             $sql = $this->select()->where('nome like ?',  "%{$nomecliente}%")->order('nome');
-            return $this->fetchAll($sql);
+            return $this->fetchRow($sql);
         }  catch (Exception $exc){
             throw new Exception('Cliente não encontrado.');
         }

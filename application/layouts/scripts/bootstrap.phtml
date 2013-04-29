@@ -4,20 +4,22 @@
 <meta charset="utf-8" />
 <title>Admin</title>
 <!-- Incluindo o CSS do Bootstrap -->
-<link href="stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-
+    <div style="padding: 50px;">
 <!-- Incluindo o jQuery que é requisito do JavaScript do Bootstrap -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <!-- Incluindo o JavaScript do Bootstrap -->
-<script src="javascripts/bootstrap.min.js"></script>
+<script src="../javascripts/bootstrap.min.js"></script>
 
 <?php echo $this->layout()->content; ?>
 
+<?php if(isset($this->showLogout)){ ?>
+    <p style="margin-top: 200px;"><a href="deslogar">deslogar</a></p>
+<?php } ?>
 
-<p style="margin-top: 200px;"><a href="deslogar">deslogar</a></p>
-
+    </div>
 </body>
 </html>
