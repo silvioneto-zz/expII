@@ -49,7 +49,7 @@ class AdminController extends Zend_Controller_Action
                  }
          }else{
              
-             if($this->_hasParam('editar')){
+            if($this->_hasParam('editar')){
              
             }elseif($this->_hasParam('apagar')){
                 try {

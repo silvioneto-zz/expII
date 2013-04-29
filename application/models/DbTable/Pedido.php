@@ -78,7 +78,7 @@ class DbTable_Pedido extends Zend_Db_Table_Abstract
         }
     }
     
-        public function getPedidoDetalhe($codpedido){
+    public function getPedidoDetalhe($codpedido){
         try{
             $sql = $this->select()
                                 ->from(array('p' => $this->_name), 
@@ -98,6 +98,24 @@ class DbTable_Pedido extends Zend_Db_Table_Abstract
             return $this->fetchAll($sql);
         }  catch (Exception $exc){
             throw new Exception('Detalhe do pedido não encontrado.');
+        }
+    }
+    
+    public function getPedidosByCliente($codcliente){
+        try{
+            $sql = $this->select()->where('idCliente = ?', $codcliente)->group('idPedido');
+            return $this->fetchAll($sql);
+        }  catch (Exception $exc){
+            throw new Exception('Pedido do cliente não encontrado.');
+        }
+    }
+
+    public function apagarPedidoCliente($codcliente){
+        
+        try{
+            $this->delete("idCliente = '".$codcliente."'");          
+        }  catch (Exception $exc){
+            throw new Exception('Pedido não encontrado.'.$exc->getMessage());
         }
     }
     
