@@ -3,13 +3,6 @@ class AdminController extends Zend_Controller_Action
 {
     const USER = 'admin';
     const PASS = 'admin';
-
-    public function preDispatch()
-    {
-        //$this->_helper->_layout->setLayout('bootstrap');
-        //$this->_helper->layout()->disableLayout(); 
-        //$this->_helper->viewRenderer->setNoRender(true);
-    }
     
     public function init() {
         $this->_helper->_layout->setLayout('bootstrap');
@@ -50,7 +43,14 @@ class AdminController extends Zend_Controller_Action
          }else{
              
             if($this->_hasParam('editar')){
-             
+                try {
+                    $this->_redirect($this->_getParam('controller')."/editar-cliente/editar/".$this->getParam('editar'));
+                    return;
+                } catch (Exception $exc) {
+                     $this->view->erro = 1;
+                     $this->view->msg = $exc->getMessage();
+                 }
+                
             }elseif($this->_hasParam('apagar')){
                 try {
                      $obj = new DbTable_Cliente();
@@ -72,6 +72,19 @@ class AdminController extends Zend_Controller_Action
                  $this->view->msg = $exc->getMessage();
              }
          }
+    }
+    
+    public function editarClienteAction(){
+        $obj = new DbTable_Cliente();
+        if($this->getRequest()->isPost()){
+            $post = $this->getAllParams();
+            $obj->update(array('telefone'=> $post['telefone'], 'email' => $post['email']), "idCliente = '".$post['idCliente']."'");
+            $this->_redirect($this->_getParam('controller')."/clientes");
+            return;
+        }
+        
+        if(!$this->_hasParam('editar')){ die(); }
+        $this->view->cliente = $obj->fetchRow("idCliente = '".$this->getParam('editar')."'");
     }
     
     public function servicosAction(){

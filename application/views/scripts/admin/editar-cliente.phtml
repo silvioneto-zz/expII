@@ -1,0 +1,22 @@
+<h2>Atualizar Cliente: <?php echo $this->cliente->nome; ?></h2>
+<form class="form-horizontal" name="editarCliente" action="editar-cliente" method="post">
+  <div class="control-group">
+    
+    <div class="controls">
+        <label>Telefone:</label>
+        <input name="telefone" value="<?php echo $this->cliente->telefone; ?>" type="text" />
+        <label>e-mail:</label>
+        <input name="email" value="<?php echo $this->cliente->email; ?>" type="text" />
+        <input name="idCliente" value="<?php echo $this->cliente->idCliente; ?>" type="hidden" />
+    </div>
+  </div>
+    <div class="control-group">
+    <div class="controls">
+      <button class="btn" type="submit">Atualizar Cliente</button>
+    </div>
+  </div>
+</form>
+
+ <p><?php echo $this->msg; ?></p>
+
+<h4><a href="/exp/admin/clientes">Voltar</a></h4>
